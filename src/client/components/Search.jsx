@@ -32,7 +32,7 @@ export default class Search extends Component {
 
   handleSubmit = (e) => {
     const { searchTerm } = this.state;
-    console.logs(searchTerm)
+    console.log(searchTerm)
   }
 
   render() {
