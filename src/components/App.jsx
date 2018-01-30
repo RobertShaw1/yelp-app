@@ -12,11 +12,18 @@ import {
 import Search from './Search';
 import BusinessDetail from './BusinessDetail';
 
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  marginTop: '3rem',
+}
+
 //Create App component
 export default function App() {
   return (
     <Router>
-      <div className='container'>
+      <div className='container' style={containerStyle}>
         <Switch>
           <Route exact path='/' component={Search} />
           <Route path='/businessdetail/:name' component={BusinessDetail} />
