@@ -6,7 +6,14 @@ import { Link } from 'react-router-dom';
 import { Input } from 'semantic-ui-react';
 
 /** LOCAL MODULES */
+import api  from '../utils/api'
 
+const styles = {
+  buttonContainer: {
+    display:  'flex',
+    justifyContent: 'center',
+  }
+}
 
 // Search Component
 export default class Search extends Component {
@@ -14,6 +21,7 @@ export default class Search extends Component {
     super(props);
     this.state = {
       searchTerm: '',
+      businesses: {},
     }
   }
 
@@ -22,6 +30,10 @@ export default class Search extends Component {
     this.setState({searchTerm})
   }
 
+  handleSubmit = (e) => {
+    const { searchTerm } = this.state;
+    console.logs(searchTerm)
+  }
 
   render() {
     return (
@@ -35,6 +47,10 @@ export default class Search extends Component {
             fluid
             onChange={this.handleChange}
           />
+        <br/>
+          <div style={styles.buttonContainer}>
+            <button className='search-button' onClick={this.handleSubmit} >Search</button>
+          </div>
         <br/>
         <Link to={`/businessdetail/${'insert-business-name'}`}>
           <h3>Click Here if you'd like to see the Business Detail Component</h3>

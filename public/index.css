@@ -2,3 +2,18 @@ html, body, #app, .container {
   height: 100%;
   margin: 0;
 }
+
+.search-button {
+  height: 2.5rem;
+  width: 10rem;
+  outline: none;
+  border-radius: .5rem;
+  border-color: red;
+  background-color: transparent;
+  color: red;
+}
+
+.search-button:hover {
+  color: white;
+  background-color: red;
+}
