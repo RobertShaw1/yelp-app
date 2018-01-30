@@ -1,4 +1,6 @@
 'use strict'
+
+require('../../secrets');
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
@@ -9,19 +11,23 @@ const config = require('../../webpack.config.js')(process.env);
 const compiler = webpack(config);
 
 /*
- Tell express to use the webpack-dev-middleware and use the webpack.config.js file as a base.
- */
+Tell express to use the webpack-dev-middleware and use the webpack.config.js file as a base.
+*/
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const PUBLIC_DIR = path.resolve(__dirname, '../../public');
 const PORT = 8080;
 
+app.use('/api', require('./api'));
 app.use(express.static(PUBLIC_DIR));
-app.use('*', express.static(PUBLIC_DIR));
 
 
 app.listen(PORT, (err) => {
