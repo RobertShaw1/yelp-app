@@ -1,4 +1,4 @@
-html, body, #app {
+html, body, #app, .container {
   height: 100%;
   margin: 0;
 }
