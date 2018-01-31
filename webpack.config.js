@@ -20,12 +20,18 @@ module.exports = env => {
       publicPath: '/'
     },
     module: {
-      rules: [{
-        test: /\.jsx?$/,
-        include: CLIENT_DIR,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel-loader',
-      }],
+      rules: [
+        {
+          test: /\.jsx?$/,
+          include: CLIENT_DIR,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel-loader',
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: ['file-loader'],
+        },
+      ],
     },
     resolve: {
       modules: [
