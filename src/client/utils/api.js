@@ -2,31 +2,25 @@
 
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.yelp.com/v3/';
-axios.defaults.headers.common['Authorization'] = process.env.FUSIONAPI_KEY;
+axios.defaults.baseURL = 'http://localhost:8080/api';
 
 export default {
-  fetchBusinesses: async term => {
+  fetchBusinesses: async searchTerm => {
     try {
-      const list = await axios.get(`businesses/search?location=Naperville&limit=50&term=${term}`);
-      console.log(list.data)
+      const list = await axios.get(`/search?term=${searchTerm}`);
       return list.data;
     } catch (error) {
       console.warn(error);
       return null;
     }
-  }
-}
-
-
-/**
- * Query Strings:
- * Returns the first 50 businesses based on user search term
- *    --> https://api.yelp.com/v3/businesses/search?location=Naperville&limit=50&term=userinput
- * 
- * To get the next 50 businesses we need to add an offset parameter to the query
- *    --> https://api.yelp.com/v3/businesses/search?location=Naperville&limit=50&offset=51&term=userinput
- * 
- * 
- * 
- */
+  },
+  fetchBusinessDetail: async businessId => {
+    try {
+      const businessDetail = await axios.get(`business-detail/${businessId}`);
+      return businessDetail.data;
+    } catch (error) {
+      console.warn(error);
+      return null;
+    }
+  },
+};
