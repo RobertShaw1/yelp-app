@@ -26,7 +26,7 @@ export default function App() {
       <div className='container' style={containerStyle}>
         <Switch>
           <Route exact path='/' component={Search} />
-          <Route path='/businessdetail/:name' component={BusinessDetail} />
+          <Route path='/business-detail/:id' component={BusinessDetail} />
           <Route render={function() {
               return <p>Not Found</p>
           }} />
