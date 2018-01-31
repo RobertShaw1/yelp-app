@@ -17,3 +17,12 @@ html, body, #app, .container {
   color: white;
   background-color: red;
 }
+
+.yelp-logo {
+  height: 3.5rem;
+}
+
+.powered {
+  padding-top: 1.4rem;
+  color: white;
+}
