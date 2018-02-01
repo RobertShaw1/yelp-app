@@ -1,21 +1,96 @@
-html, body, #app, .container {
+html, body, #app {
   height: 100%;
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,Unbuntu, Cantarell,Helvetica,Neue, sans-serif;
 }
+
+a {
+  color: #0073bb;
+  text-decoration: none;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-container {
+  width: 40rem;
+  padding-bottom: 6.5rem;
+}
+
+.articleContainer {
+  width: 40%;
+  margin: .5rem;
+  padding: .5rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: .2rem;
+}
+
+.articleContainer > p {
+  padding-left: .5rem;
+}
+
+@media screen and (max-width: 480px) {
+  .scroll-container {
+    width: 21rem;
+  }
+
+  .articleContainer {
+    width: 100%;
+  }
+}
+
+
+footer {
+  height: 3rem;
+  width: 100%;
+  margin-top: auto;
+  padding-bottom: .5rem;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.search-bar {
+  height: 2.5rem;
+  width: 18rem;
+  border-radius: .3rem 0rem 0rem .3rem;
+  border-style: solid none solid solid;
+  border-width: .9px;
+  border-color: darkgray;
+  outline: none;
+  font-size: 1rem;
+  padding: 0 1rem;
+}
+
+.search-bar:focus {
+  border-color: cornflowerblue;
+}
+
 
 .search-button {
   height: 2.5rem;
-  width: 10rem;
+  width: 3.5rem;
   outline: none;
-  border-radius: .5rem;
+  border-radius: 0 .3rem .3rem 0;
   border-color: red;
-  background-color: transparent;
-  color: red;
+  background-color: red;
+  color: white;
 }
 
 .search-button:hover {
-  color: white;
-  background-color: red;
+  background-color: rgb(170, 26, 26);
+  border-color: rgb(170, 26, 26);
+}
+
+.loading {
+  width: fit-content;
+  margin: 8rem auto auto auto;
 }
 
 .yelp-logo {
@@ -25,4 +100,57 @@ html, body, #app, .container {
 .powered {
   padding-top: 1.4rem;
   color: white;
+}
+
+.fa-map-marker-alt {
+  margin-right: .5rem;
+}
+
+.fa-gem {
+  animation: glow 4.5s linear 0s infinite normal;
+}
+
+@-webkit-keyframes glow {
+  0% {
+      -webkit-transform: scale(1.0);
+      opacity: 1;
+  }
+  25% {
+      -webkit-transform: scale(0.9);
+      opacity: .8;
+  }
+  50% {
+      -webkit-transform: scale(1.0);
+      opacity: 1;
+  }
+  75% {
+      -webkit-transform: scale(0.9);
+      opacity: .8;
+  }
+  100% {
+      -webkit-transform: scale(1.0);
+      opacity: 1;
+  }
+}
+@-moz-keyframes glow {
+  0% {
+      -moz-transform: scale(1.0);
+      opacity: 1;
+  }
+  25% {
+      -moz-transform: scale(0.9);
+      opacity: .8;
+  }
+  50% {
+      -moz-transform: scale(1.0);
+      opacity: 1;
+  }
+  75% {
+      -moz-transform: scale(0.9);
+      opacity: .8;
+  }
+  100% {
+      -moz-transform: scale(1.0);
+      opacity: 1;
+  }
 }
