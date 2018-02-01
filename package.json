@@ -8,7 +8,7 @@
     "server": "nodemon ./src/server",
     "start-server": "yarn server -e html,js,scss --ignore public",
     "start-dev": "yarn webpack --env.development & yarn start-server",
-    "start-prod": "yarn webpack --env.production & yarn start-server"
+    "start": "yarn webpack --env.production & yarn start-server"
   },
   "dependencies": {
     "axios": "^0.17.1",
