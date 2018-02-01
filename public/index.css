@@ -18,6 +18,8 @@ a {
 .scroll-container {
   width: 40rem;
   padding-bottom: 6.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .articleContainer {
@@ -102,7 +104,7 @@ footer {
   color: white;
 }
 
-.fa-map-marker-alt {
+.fa-map-marker-alt, .fa-phone, .fa-arrow-left {
   margin-right: .5rem;
 }
 
