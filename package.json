@@ -7,8 +7,9 @@
   "scripts": {
     "server": "nodemon ./src/server",
     "start-server": "yarn server -e html,js,scss --ignore public",
-    "start-dev": "yarn webpack --env.development & yarn start-server",
-    "start": "yarn webpack --env.production & yarn start-server"
+    "start-dev": "webpack --env.development & yarn start-server",
+    "start": "yarn start-server",
+    "deploy": "git checkout -b deploy && webpack --env.production && git add -f public/bin && git commit --allow-empty -m 'Deploying' && git push --force heroku master && git checkout master && git branch -D deploy"
   },
   "dependencies": {
     "axios": "^0.17.1",
