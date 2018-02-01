@@ -11,7 +11,7 @@ import {
 /** LOCAL MODULES */
 import Search from './Search';
 import BusinessDetail from './BusinessDetail';
-import Yelp from '../../../public/assets/Yelp_trademark_RGB_outline.png'
+import Yelp from '../../../public/assets/Yelp_trademark_RGB_outline.png';
 
 //Create App component
 export default function App() {
