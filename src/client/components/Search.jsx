@@ -2,13 +2,22 @@
 
 /** NODE MODULES */
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { Input } from 'semantic-ui-react';
 
 /** LOCAL MODULES */
 import api  from '../utils/api';
+import BusinessCards from './BusinessCards';
+import Loading from '../../../public/assets/searching.gif'
 
 const styles = {
+  header: {
+    textAlign: 'center',
+    color: 'black',
+  },
+  searchContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+  },
   buttonContainer: {
     display:  'flex',
     justifyContent: 'center',
@@ -22,6 +31,7 @@ export default class Search extends Component {
     this.state = {
       searchTerm: '',
       businesses: [],
+      loading: false,
     };
   }
 
@@ -31,46 +41,44 @@ export default class Search extends Component {
   }
 
   handleSubmit = (e) => {
+    this.setState({loading: true})
+
     const { searchTerm } = this.state;
     api.fetchBusinesses(searchTerm)
     .then(data => {
-      console.log('data = ', data)
       const { businesses } = data;
-      this.setState({businesses});
+      this.setState({businesses, loading: false});
     })
   }
 
   render() {
-    const { businesses } = this.state;
+    const { businesses, loading } = this.state;
 
     return (
-      <div>
-        <h1>You've reached the Search Component!</h1>
-        <br/>
-          <Input
-            size='large'
-            icon='search'
-            placeholder='Search...'
-            fluid
-            onChange={this.handleChange}
-          />
+      <div style={styles.searchContainer}>
+        <h1 style={styles.header}>Naperville Business Directory</h1>
         <br/>
           <div style={styles.buttonContainer}>
-            <button className='search-button' onClick={this.handleSubmit} >Search</button>
+            <input
+              className='search-bar'
+              type='search'
+              placeholder='Search...'
+              onChange={this.handleChange}
+            />
+            <button
+              className='search-button'
+              onClick={this.handleSubmit} 
+            >
+              <i className='fas fa-search fa-lg' />
+            </button>
           </div>
         <br/>
         {
-          businesses.length
-          ? businesses.map(business => {
-              return (
-                <Link key={business.id} to={`/business-detail/${business.id}`}>
-                  <h3>{business.name}</h3>
-                </Link>
-              )
-            })
-          : <Link to={`/businessdetail/${'insert-business-name'}`}>
-              <h3>Click Here if you'd like to see the Business Detail Component</h3>
-            </Link>
+          loading
+          ? <img className='loading' src={Loading} alt='Loading...' />
+          : businesses.length
+          ? <BusinessCards businesses={businesses} />
+          : null
         }
       </div>
     )
